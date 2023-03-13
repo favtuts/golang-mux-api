@@ -46,3 +46,29 @@ mkdir golang-mux-api
 cd golang-mux-api
 go mod init golang-mux-api
 ```
+
+# install Mux library
+
+```
+$ go get -u github.com/gorilla/mux
+
+go: added github.com/gorilla/mux v1.8.0
+```
+
+# build project
+
+```
+go build
+```
+
+# run project
+
+```
+go run .
+```
+
+or
+
+```
+go run *.go
+```
