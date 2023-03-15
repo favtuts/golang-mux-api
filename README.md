@@ -1,4 +1,6 @@
-# golang-mux-api
+
+# Golang REST API - Clean Architecture Principles
+
 Source codes for blog series: https://www.favtuts.com/golang-go-crash-course-series/
 
 
@@ -55,9 +57,31 @@ $ go get -u github.com/gorilla/mux
 go: added github.com/gorilla/mux v1.8.0
 ```
 
+# install Chi library
+```
+$ go get -u github.com/go-chi/chi
+
+go: added github.com/go-chi/chi v1.5.4
+```
+
+
 # install Firestore library
 ```
-go get cloud.google.com/go/firestore
+$ go get -u cloud.google.com/go/firestore
+```
+
+# install MySQL library
+```
+$ go get -u github.com/go-sql-driver/mysql
+
+go: added github.com/go-sql-driver/mysql v1.7.0
+```
+
+# install MongoDB library
+```
+$ go get -u go.mongodb.org/mongo-driver
+
+go: added go.mongodb.org/mongo-driver v1.11.2
 ```
 
 # export Environment variable
