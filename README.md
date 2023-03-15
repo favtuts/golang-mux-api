@@ -55,6 +55,23 @@ $ go get -u github.com/gorilla/mux
 go: added github.com/gorilla/mux v1.8.0
 ```
 
+# install Firestore library
+```
+go get cloud.google.com/go/firestore
+```
+
+# export Environment variable
+```
+export GOOGLE_APPLICATION_CREDENTIALS='/path/to/project-private.key.json'
+
+/home/tvt/FIREBASE/pragmatic-reviews-62551-firebase-adminsdk-l8p5o-65461f8c5b.json
+```
+
+# how to get the private key JSON file:
+
+From the Firebase Console: **Project Overview** -> **Project Settings** -> **Service Accounts** -> **Generate new private key**
+
+
 # build project
 
 ```
