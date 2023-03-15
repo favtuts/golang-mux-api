@@ -1,4 +1,5 @@
-# golang-mux-api
+# Connecting our REST API with Firebase Firestore Database
+
 Source codes for blog series: https://www.favtuts.com/golang-go-crash-course-series/
 
 
