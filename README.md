@@ -84,6 +84,14 @@ $ go get -u go.mongodb.org/mongo-driver
 go: added go.mongodb.org/mongo-driver v1.11.2
 ```
 
+# install Testify library
+
+```
+$ go get -u github.com/stretchr/testify
+
+go: added github.com/stretchr/testify v1.8.2
+```
+
 # export Environment variable
 ```
 export GOOGLE_APPLICATION_CREDENTIALS='/path/to/project-private.key.json'
