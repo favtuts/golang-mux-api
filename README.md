@@ -121,3 +121,99 @@ or
 ```
 go run *.go
 ```
+
+
+# mashup APIs using goroutines and channels
+
+Let use data from myfakeapi.com
+
+Get CAR info
+```
+curl --location 'https://myfakeapi.com/api/cars/1'
+
+{
+    "Car": {
+        "id": 1,
+        "car": "Mitsubishi",
+        "car_model": "Montero",
+        "car_color": "Yellow",
+        "car_model_year": 2002,
+        "car_vin": "SAJWJ0FF3F8321657",
+        "price": "$2814.46",
+        "availability": false
+    }
+}
+```
+
+Get USER info
+```
+curl --location 'https://myfakeapi.com/api/users/1'
+
+{
+    "User": {
+        "id": 1,
+        "first_name": "Alyosha",
+        "last_name": "Caldero",
+        "email": "acaldero0@behance.net",
+        "gender": "Male",
+        "birthdate": "29/12/1997",
+        "company_name": "King and Sons",
+        "department": "Sales",
+        "job_title": "Senior Editor",
+        "address": [
+            {
+                "street": "1 Hanson Terrace",
+                "street_name": "Merrick",
+                "city": "Beaufort",
+                "state": "South Carolina",
+                "country": "United States",
+                "country_code": "US",
+                "postal_code": "29905"
+            }
+        ],
+        "phone": "+7 (835) 885-9702",
+        "avatar": "https://robohash.org/voluptasautmagni.png?size=180x180&set=set1",
+        "email_verified": true,
+        "password": "6707389d040d09a08ad2803846f30db544242f06",
+        "last_login": "Never",
+        "last_login_ip": "239.243.71.212",
+        "subscribed": true
+    }
+}
+```
+
+
+The we mashup json data as follow:
+```json
+{
+    "id": 1,
+    "brand": "Mitsubishi",
+    "model": "Montero",
+    "model_year": 2002,
+    "owner_firstname": "Alyosha",
+    "owner_lastname": "Caldero",
+    "owner_email": "acaldero0@behance.net"
+}
+```
+
+
+Run the API
+```
+$ go run *.go
+```
+
+Then test the API
+```
+$ curl --location 'http://localhost:8000/carDetails'
+
+
+{
+    "id": 1,
+    "brand": "Mitsubishi",
+    "model": "Montero",
+    "model_year": 2002,
+    "owner_firstname": "Alyosha",
+    "owner_lastname": "Caldero",
+    "owner_email": "acaldero0@behance.net"
+}
+```

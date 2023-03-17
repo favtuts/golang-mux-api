@@ -4,17 +4,14 @@ import (
 	"fmt"
 	"golang-mux-api/controller"
 	router "golang-mux-api/http"
-	"golang-mux-api/repository"
 	"golang-mux-api/service"
 	"net/http"
 )
 
 var (
-	postRepository repository.PostRepository = repository.NewFirestoreRepository()
-	postService    service.PostService       = service.NewPostService(postRepository)
-	postController controller.PostController = controller.NewPostController(postService)
-	//httpRouter     router.Router             = router.NewMuxRouter()
-	httpRouter router.Router = router.NewChiRouter()
+	carDetailsService    service.CarDetailsService       = service.NewCarDetailsService()
+	carDetailsController controller.CarDetailsController = controller.NewCarDetailsController(carDetailsService)
+	httpRouter           router.Router                   = router.NewChiRouter()
 )
 
 func main() {
@@ -24,8 +21,6 @@ func main() {
 		fmt.Fprint(resp, "Up and running...")
 	})
 
-	httpRouter.GET("/posts", postController.GetPosts)
-	httpRouter.POST("/posts", postController.AddPost)
-
+	httpRouter.GET("/carDetails", carDetailsController.GetCarDetails)
 	httpRouter.SERVE(port)
 }
