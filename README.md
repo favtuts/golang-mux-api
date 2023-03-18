@@ -121,3 +121,15 @@ or
 ```
 go run *.go
 ```
+
+# run Unit Test
+
+Test (specific test)
+```
+$ go test -run NameOfTest
+```
+
+Test (all the tests within the service folder)
+```
+$ go test service/*.go
+```
