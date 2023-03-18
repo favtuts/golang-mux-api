@@ -84,6 +84,13 @@ $ go get -u go.mongodb.org/mongo-driver
 go: added go.mongodb.org/mongo-driver v1.11.2
 ```
 
+# install SQLite 3 Library
+```
+$ go get -u github.com/mattn/go-sqlite3
+
+go: added github.com/mattn/go-sqlite3 v1.14.16
+```
+
 # install Testify library
 
 ```
