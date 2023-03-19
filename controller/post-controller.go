@@ -2,9 +2,9 @@ package controller
 
 import (
 	"encoding/json"
-	"golang-mux-api/entity"
-	"golang-mux-api/errors"
-	"golang-mux-api/service"
+	"github.com/favtuts/golang-mux-api/entity"
+	"github.com/favtuts/golang-mux-api/errors"
+	"github.com/favtuts/golang-mux-api/service"
 	"net/http"
 )
 

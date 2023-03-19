@@ -3,9 +3,9 @@ package controller
 import (
 	"bytes"
 	"encoding/json"
-	"golang-mux-api/entity"
-	"golang-mux-api/repository"
-	"golang-mux-api/service"
+	"github.com/favtuts/golang-mux-api/entity"
+	"github.com/favtuts/golang-mux-api/repository"
+	"github.com/favtuts/golang-mux-api/service"
 	"io"
 	"net/http"
 	"net/http/httptest"

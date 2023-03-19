@@ -2,10 +2,10 @@ package main
 
 import (
 	"fmt"
-	"golang-mux-api/controller"
-	router "golang-mux-api/http"
-	"golang-mux-api/repository"
-	"golang-mux-api/service"
+	"github.com/favtuts/golang-mux-api/controller"
+	router "github.com/favtuts/golang-mux-api/http"
+	"github.com/favtuts/golang-mux-api/repository"
+	"github.com/favtuts/golang-mux-api/service"
 	"net/http"
 )
 

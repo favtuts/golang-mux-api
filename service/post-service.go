@@ -2,8 +2,8 @@ package service
 
 import (
 	"errors"
-	"golang-mux-api/entity"
-	"golang-mux-api/repository"
+	"github.com/favtuts/golang-mux-api/entity"
+	"github.com/favtuts/golang-mux-api/repository"
 	"math/rand"
 )
 

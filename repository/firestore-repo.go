@@ -2,7 +2,7 @@ package repository
 
 import (
 	"context"
-	"golang-mux-api/entity"
+	"github.com/favtuts/golang-mux-api/entity"
 	"log"
 
 	"cloud.google.com/go/firestore"

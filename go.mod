@@ -1,4 +1,4 @@
-module golang-mux-api
+module github.com/favtuts/golang-mux-api
 
 go 1.20
 

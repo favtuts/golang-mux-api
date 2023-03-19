@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 
-	"golang-mux-api/entity"
+	"github.com/favtuts/golang-mux-api/entity"
 
 	_ "github.com/mattn/go-sqlite3"
 )

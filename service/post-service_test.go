@@ -1,7 +1,7 @@
 package service
 
 import (
-	"golang-mux-api/entity"
+	"github.com/favtuts/golang-mux-api/entity"
 	"testing"
 
 	"github.com/stretchr/testify/assert"

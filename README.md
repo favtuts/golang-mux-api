@@ -49,6 +49,41 @@ cd golang-mux-api
 go mod init golang-mux-api
 ```
 
+# Go Modules commands
+
+Initialize the module for the app (from root dir)
+
+```
+$ go mod init github.com/favtuts/golang-mux-api
+```
+
+Edit the existing module file for the new name
+```
+$ go mod edit -module github.com/favtuts/golang-mux-api
+```
+
+To rename all imported module from OLD_MODULE to NEW_MODULE
+```
+find . -type f -name '*.go' \
+  -exec sed -i -e 's,{OLD_MODULE},{NEW_MODULE},g' {} \;
+```
+In our cases
+```
+find . -type f -name '*.go' \
+  -exec sed -i -e 's,golang-mux-api,github.com/favtuts/golang-mux-api,g' {} \;
+```
+
+
+Download external dependencies
+```
+$ go mod download  
+```
+
+The go command uses the `go.sum` file to ensure that future downloads of these modules retrieve the same bits as the first download (it keeps an initial hash)
+
+Both `go.mod` and `go.sum` should be checked into version control.
+
+
 # install Mux library
 
 ```
@@ -139,4 +174,16 @@ $ go test -run NameOfTest
 Test (all the tests within the service folder)
 ```
 $ go test service/*.go
+```
+
+# docker container
+
+To build docker image
+```
+$ docker build -t golang-api .
+```
+
+To run docker container
+```
+$ docker run -p 8000:8000 golang-api
 ```
