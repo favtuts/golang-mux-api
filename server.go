@@ -1,12 +1,12 @@
 package main
 
 import (
-	"fmt"
+	"os"
+
 	"github.com/favtuts/golang-mux-api/controller"
 	router "github.com/favtuts/golang-mux-api/http"
 	"github.com/favtuts/golang-mux-api/repository"
 	"github.com/favtuts/golang-mux-api/service"
-	"net/http"
 )
 
 var (
@@ -19,14 +19,9 @@ var (
 )
 
 func main() {
-	const port string = ":8000"
-
-	httpRouter.GET("/", func(resp http.ResponseWriter, request *http.Request) {
-		fmt.Fprint(resp, "Up and running...")
-	})
 
 	httpRouter.GET("/posts", postController.GetPosts)
 	httpRouter.POST("/posts", postController.AddPost)
 
-	httpRouter.SERVE(port)
+	httpRouter.SERVE(":" + os.Getenv("PORT"))
 }

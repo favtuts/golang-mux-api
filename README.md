@@ -176,6 +176,13 @@ Test (all the tests within the service folder)
 $ go test service/*.go
 ```
 
+# set PORT environment
+
+```
+$ export PORT="8000"
+$ echo $PORT
+```
+
 # docker container
 
 To build docker image
