@@ -2,15 +2,18 @@ package service
 
 import (
 	"errors"
+	"math/rand"
+	"strconv"
+
 	"github.com/favtuts/golang-mux-api/entity"
 	"github.com/favtuts/golang-mux-api/repository"
-	"math/rand"
 )
 
 type PostService interface {
 	Validate(post *entity.Post) error
 	Create(post *entity.Post) (*entity.Post, error)
 	FindAll() ([]entity.Post, error)
+	FindByID(id string) (*entity.Post, error)
 }
 
 type service struct{}
@@ -44,4 +47,12 @@ func (*service) Create(post *entity.Post) (*entity.Post, error) {
 
 func (*service) FindAll() ([]entity.Post, error) {
 	return repo.FindAll()
+}
+
+func (*service) FindByID(id string) (*entity.Post, error) {
+	_, err := strconv.ParseInt(id, 10, 64)
+	if err != nil {
+		return nil, err
+	}
+	return repo.FindByID(id)
 }

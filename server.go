@@ -22,6 +22,6 @@ func main() {
 
 	httpRouter.GET("/posts", postController.GetPosts)
 	httpRouter.POST("/posts", postController.AddPost)
-
+	httpRouter.GET("/posts/{id}", postController.GetPostByID)
 	httpRouter.SERVE(":" + os.Getenv("PORT"))
 }

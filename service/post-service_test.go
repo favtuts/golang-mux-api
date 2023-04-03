@@ -1,8 +1,9 @@
 package service
 
 import (
-	"github.com/favtuts/golang-mux-api/entity"
 	"testing"
+
+	"github.com/favtuts/golang-mux-api/entity"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
@@ -28,8 +29,8 @@ func TestFindAll(t *testing.T) {
 	mockRepo := new(MockRepository)
 
 	var identifier int64 = 1
-	post := entity.Post{ID: identifier, Title: "A", Text: "B"}
 
+	post := entity.Post{ID: identifier, Title: "A", Text: "B"}
 	// Setup expectations
 	mockRepo.On("FindAll").Return([]entity.Post{post}, nil)
 
@@ -37,10 +38,10 @@ func TestFindAll(t *testing.T) {
 
 	result, _ := testService.FindAll()
 
-	// Mock Assertion: Behavioral
+	//Mock Assertion: Behavioral
 	mockRepo.AssertExpectations(t)
 
-	// Data Assertion
+	//Data Assertion
 	assert.Equal(t, identifier, result[0].ID)
 	assert.Equal(t, "A", result[0].Title)
 	assert.Equal(t, "B", result[0].Text)
@@ -48,10 +49,9 @@ func TestFindAll(t *testing.T) {
 
 func TestCreate(t *testing.T) {
 	mockRepo := new(MockRepository)
-
 	post := entity.Post{Title: "A", Text: "B"}
 
-	// Setup expectations
+	//Setup expectations
 	mockRepo.On("Save").Return(&post, nil)
 
 	testService := NewPostService(mockRepo)
@@ -72,7 +72,6 @@ func TestValidateEmptyPost(t *testing.T) {
 	err := testService.Validate(nil)
 
 	assert.NotNil(t, err)
-
 	assert.Equal(t, "The post is empty", err.Error())
 }
 
@@ -84,6 +83,5 @@ func TestValidateEmptyPostTitle(t *testing.T) {
 	err := testService.Validate(&post)
 
 	assert.NotNil(t, err)
-
 	assert.Equal(t, "The post title is empty", err.Error())
 }

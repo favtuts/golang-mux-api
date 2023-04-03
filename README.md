@@ -183,7 +183,7 @@ $ export PORT="8000"
 $ echo $PORT
 ```
 
-# docker container
+# use docker container
 
 To build docker image
 ```
@@ -193,4 +193,44 @@ $ docker build -t golang-api .
 To run docker container
 ```
 $ docker run -p 8000:8000 golang-api
+```
+
+
+# install Redis on Linux (Ubuntu)
+
+```
+curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
+
+echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/redis.list
+
+sudo apt-get update
+sudo apt-get install redis
+
+sudo service redis-server start
+```
+
+
+# testing REST API
+
+```
+$ cd controller/
+$ go test -v -run TestAddPost
+=== RUN   TestAddPost
+--- PASS: TestAddPost (0.01s)
+PASS
+ok      github.com/favtuts/golang-mux-api/controller    0.019s
+
+
+$ go test -v -run TestGetPosts
+=== RUN   TestGetPosts
+--- PASS: TestGetPosts (0.01s)
+PASS
+ok      github.com/favtuts/golang-mux-api/controller    0.034s
+
+
+$ go test -v -run TestGetPostByID
+=== RUN   TestGetPostByID
+--- PASS: TestGetPostByID (0.01s)
+PASS
+ok      github.com/favtuts/golang-mux-api/controller    0.028s
 ```
