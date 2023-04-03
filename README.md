@@ -245,3 +245,34 @@ $ go test -v -run TestGetPostByID
 PASS
 ok      github.com/favtuts/golang-mux-api/controller    0.028s
 ```
+
+# run REST API server with PORT env
+
+```
+$ export PORT=8000
+$ go run *.go
+Mux HTTP server running on port :8000
+```
+
+
+# run cURL commands to test REST APIs
+
+Create new post
+```
+127.0.0.1:6379[1]> KEYS *
+(empty array)
+
+curl -v --location 'http://localhost:8000/posts' \
+--header 'Content-Type: application/json' \
+--data '{
+    "title": "Title 1",
+    "text": "Text 1"
+}'
+{"id":7515018121727868634,"title":"Title 1","text":"Text 1"}
+
+
+127.0.0.1:6379[1]> KEYS *
+1) "7515018121727868634"
+127.0.0.1:6379[1]> GET 7515018121727868634
+"{\"id\":7515018121727868634,\"title\":\"Title 1\",\"text\":\"Text 1\"}"
+```

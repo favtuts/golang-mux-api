@@ -8,6 +8,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
+	"github.com/favtuts/golang-mux-api/cache"
 	"github.com/favtuts/golang-mux-api/entity"
 	"github.com/favtuts/golang-mux-api/repository"
 	"github.com/favtuts/golang-mux-api/service"
@@ -24,7 +25,8 @@ const (
 var (
 	postRepo       repository.PostRepository = repository.NewSQLiteRepository()
 	postSrv        service.PostService       = service.NewPostService(postRepo)
-	postController PostController            = NewPostController(postSrv)
+	postCh         cache.PostCache           = cache.NewRedisCache("localhost:6379", 0, 100)
+	postController PostController            = NewPostController(postSrv, postCh)
 )
 
 func TestAddPost(t *testing.T) {
