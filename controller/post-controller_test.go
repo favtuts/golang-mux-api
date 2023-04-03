@@ -3,13 +3,14 @@ package controller
 import (
 	"bytes"
 	"encoding/json"
-	"github.com/favtuts/golang-mux-api/entity"
-	"github.com/favtuts/golang-mux-api/repository"
-	"github.com/favtuts/golang-mux-api/service"
 	"io"
 	"net/http"
 	"net/http/httptest"
 	"testing"
+
+	"github.com/favtuts/golang-mux-api/entity"
+	"github.com/favtuts/golang-mux-api/repository"
+	"github.com/favtuts/golang-mux-api/service"
 
 	"github.com/stretchr/testify/assert"
 )
@@ -57,7 +58,8 @@ func TestAddPost(t *testing.T) {
 	assert.Equal(t, TEXT, post.Text)
 
 	// Clean up database
-	cleanUp(&post)
+	// cleanUp(&post)
+	tearDown(post.ID)
 }
 
 func TestGetPosts(t *testing.T) {
@@ -93,7 +95,8 @@ func TestGetPosts(t *testing.T) {
 	assert.Equal(t, TEXT, posts[0].Text)
 
 	// Clean up database
-	cleanUp(&posts[0])
+	// cleanUp(&posts[0])
+	tearDown(ID)
 }
 
 func cleanUp(post *entity.Post) {
@@ -107,4 +110,46 @@ func setup() {
 		Text:  TEXT,
 	}
 	postRepo.Save(&post)
+}
+
+func tearDown(postID int64) {
+	var post entity.Post = entity.Post{
+		ID: postID,
+	}
+	postRepo.Delete(&post)
+}
+
+func TestGetPostByID(t *testing.T) {
+
+	// Insert new post
+	setup()
+
+	// Create new HTTP request
+	req, _ := http.NewRequest("GET", "/posts/123", nil)
+
+	// Assing HTTP Request handler Function (controller function)
+	handler := http.HandlerFunc(postController.GetPostByID)
+	// Record the HTTP Response
+	response := httptest.NewRecorder()
+	// Dispatch the HTTP Request
+	handler.ServeHTTP(response, req)
+
+	// Assert HTTP status
+	status := response.Code
+	if status != http.StatusOK {
+		t.Errorf("Handler returned wrong status code: got %v want %v",
+			status, http.StatusOK)
+	}
+
+	// Decode HTTP response
+	var post entity.Post
+	json.NewDecoder(io.Reader(response.Body)).Decode(&post)
+
+	// Assert HTTP response
+	assert.Equal(t, ID, post.ID)
+	assert.Equal(t, TITLE, post.Title)
+	assert.Equal(t, TEXT, post.Text)
+
+	// Cleanup database
+	tearDown(ID)
 }
