@@ -134,6 +134,17 @@ $ go get -u github.com/stretchr/testify
 go: added github.com/stretchr/testify v1.8.2
 ```
 
+# install Redis library
+```
+$ go get -u github.com/go-redis/redis/v7
+
+go: downloading github.com/go-redis/redis/v7 v7.4.1
+go: downloading gopkg.in/check.v1 v1.0.0-20190902080502-41f04d3bba15
+go: added github.com/go-redis/redis/v7 v7.4.1
+go: upgraded gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127 => v1.0.0-20190902080502-41f04d3bba15
+```
+
+
 # export Environment variable
 ```
 export GOOGLE_APPLICATION_CREDENTIALS='/path/to/project-private.key.json'
