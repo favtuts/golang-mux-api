@@ -144,6 +144,20 @@ go: added github.com/go-redis/redis/v7 v7.4.1
 go: upgraded gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127 => v1.0.0-20190902080502-41f04d3bba15
 ```
 
+# install AWS SDK for Golang
+
+```
+$ go get -u github.com/aws/aws-sdk-go
+
+go: downloading github.com/aws/aws-sdk-go v1.44.235
+go: downloading golang.org/x/sys v0.1.0
+go: downloading golang.org/x/net v0.1.0
+go: added github.com/aws/aws-sdk-go v1.44.235
+go: added github.com/jmespath/go-jmespath v0.4.0
+go: upgraded golang.org/x/net v0.0.0-20221014081412-f15817d10f9b => v0.1.0
+go: upgraded golang.org/x/sys v0.0.0-20220728004956-3c1f35247d10 => v0.1.0
+```
+
 
 # export Environment variable
 ```
@@ -275,4 +289,12 @@ curl -v --location 'http://localhost:8000/posts' \
 1) "7515018121727868634"
 127.0.0.1:6379[1]> GET 7515018121727868634
 "{\"id\":7515018121727868634,\"title\":\"Title 1\",\"text\":\"Text 1\"}"
+```
+
+
+# using AWS CLI works with DynamoDB
+
+Scan all table items
+```
+$ aws dynamodb scan --table-name posts --profile=tvt_favtuts
 ```
