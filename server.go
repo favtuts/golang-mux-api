@@ -12,7 +12,8 @@ import (
 
 var (
 	//postRepository repository.PostRepository = repository.NewFirestoreRepository()
-	postRepository repository.PostRepository = repository.NewSQLiteRepository()
+	//postRepository repository.PostRepository = repository.NewSQLiteRepository()
+	postRepository repository.PostRepository = repository.NewDynamoDBRepository()
 	postService    service.PostService       = service.NewPostService(postRepository)
 	postCache      cache.PostCache           = cache.NewRedisCache("localhost:6379", 1, 100)
 	postController controller.PostController = controller.NewPostController(postService, postCache)
